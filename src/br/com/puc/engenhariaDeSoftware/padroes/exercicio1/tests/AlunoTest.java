@@ -21,30 +21,16 @@ public class AlunoTest {
 		};
 	}
 
-	@Test
+	@Test(expected=RuntimeException.class)
 	public void lancaNotaMenorQueZero() 
 	{
-		try
-		{
-			aluno.lancaNota(-1);
-		}
-		catch(RuntimeException e)
-		{
-			assertEquals(e.getMessage(), "Nota não pode ser menor que 0");
-		}
+		aluno.lancaNota(-1);
 	}
 	
-	@Test
+	@Test(expected=RuntimeException.class)
 	public void lancaNotaMaiorQueDez()
 	{
-		try
-		{
-			aluno.lancaNota(13);
-		}
-		catch(RuntimeException e)
-		{
-			assertEquals(e.getMessage(), "Nota não pode ser maior que 0");
-		}
+		aluno.lancaNota(13);
 	}
 	
 	@Test
@@ -62,30 +48,16 @@ public class AlunoTest {
 		assertEquals(aluno.getNota(), 5.5, 0.0);
 	}
 	
-	@Test
+	@Test(expected=RuntimeException.class)
 	public void lancaAulaNegativa()
 	{
-		try
-		{
-			aluno.lancaFaltas(-1, 0);
-		}
-		catch(RuntimeException e)
-		{
-			assertEquals(e.getMessage(), "Não pode ser lançado numeros nulos de aulas");
-		}
+		aluno.lancaFaltas(-1, 0);
 	}
 	
-	@Test
+	@Test(expected=RuntimeException.class)
 	public void lancaAulaZerada()
 	{
-		try
-		{
-			aluno.lancaFaltas(0, 0);
-		}
-		catch(RuntimeException e)
-		{
-			assertEquals(e.getMessage(), "Não pode ser lançado numeros nulos de aulas");
-		}
+		aluno.lancaFaltas(0, 0);
 	}
 	
 	@Test
@@ -106,17 +78,10 @@ public class AlunoTest {
 		assertEquals(aluno.getAulas(), 8);
 	}
 	
-	@Test
+	@Test(expected=RuntimeException.class)
 	public void lancaFaltaNegativa()
 	{
-		try
-		{
-			aluno.lancaFaltas(2, -1);
-		}
-		catch(RuntimeException e)
-		{
-			assertEquals(e.getMessage(), "Não pode ser lançado numeros nulos de faltas");
-		}
+		aluno.lancaFaltas(2, -1);
 	}
 	
 	@Test
@@ -171,10 +136,8 @@ public class AlunoTest {
 	@Test
 	public void CalculaFrequencia()
 	{
-		aluno.lancaFaltas(2, 1);
-		aluno.lancaFaltas(3, 2);
 		aluno.lancaFaltas(4, 1);
 		
-		assertEquals(aluno.getFrequencia(), 56);
+		assertEquals(aluno.getFrequencia(), 75);
 	}
 }

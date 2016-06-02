@@ -12,9 +12,9 @@ public abstract class Aluno
 	 */
 	public void lancaNota(double notaLancada)
 	{
-		if(nota < 0.0)
+		if(notaLancada < 0.0)
 			throw new RuntimeException("Nota não pode ser menor que 0");
-		if(nota > 10.0)
+		if(notaLancada > 10.0)
 			throw new RuntimeException("Nota não pode ser maior que 0");
 		
 		nota = notaLancada;
