@@ -2,7 +2,7 @@ package br.com.puc.engenhariaDeSoftware.padroes.exercicio1;
 
 public abstract class Aluno 
 {
-	protected float nota;
+	protected double nota;
 	protected int 	aulas;
 	protected int 	faltas;
 	
@@ -10,12 +10,12 @@ public abstract class Aluno
 	 * Lança a nota para o aluno
 	 * @param notaLancada
 	 */
-	public void lancaNota(float notaLancada)
+	public void lancaNota(double notaLancada)
 	{
-		if(nota < 0)
+		if(nota < 0.0)
 			throw new RuntimeException("Nota não pode ser menor que 0");
-		if(nota > 10)
-			throw new RuntimeException("Nota não pode ser menor que 0");
+		if(nota > 10.0)
+			throw new RuntimeException("Nota não pode ser maior que 0");
 		
 		nota = notaLancada;
 	}
@@ -27,6 +27,11 @@ public abstract class Aluno
 	 */
 	public void lancaFaltas(int aulasLancadas, int faltasLancadas)
 	{
+		if(aulasLancadas < 1)
+			throw new RuntimeException("Não pode ser lançado numeros nulos de aulas");
+		if(faltasLancadas < 0)
+			throw new RuntimeException("Não pode ser lançado numeros nulos de faltas");
+		
 		aulas 	= aulas + aulasLancadas;
 		faltas	= faltas + faltasLancadas;
 	}
@@ -35,7 +40,7 @@ public abstract class Aluno
 	 * Obtém a nota
 	 * @return float Nota do Aluno
 	 */
-	public float getNota()
+	public double getNota()
 	{
 		return nota;
 	}
@@ -50,7 +55,7 @@ public abstract class Aluno
 	}
 	
 	/**
-	 * Obteḿ o número de faltas do aluno
+	 * Obtém o número de faltas do aluno
 	 * @return int Número de faltas do Aluno
 	 */
 	public int getFaltas()
@@ -62,9 +67,16 @@ public abstract class Aluno
 	 * Obtém a frequencia do aluno
 	 * @return float Frequencia de presença do Aluno
 	 */
-	public float getFrequencia()
+	public int getFrequencia()
 	{
-		return getFaltas()/getAulas();
+		if(getAulas() < 1)
+			throw new RuntimeException("Nenhuma aula lançada");
+		
+		double frequencia = (double)getFaltas()/(double)getAulas();	//Calcula a porcentagem de presença
+		frequencia = 1.0 - frequencia;								//Diminui a porcentagem de 1, para obter a frequencia
+		frequencia = frequencia * 100; 								//Multiplica por 100 para obter o valor fracionario da frequencia, por exemplo 30%
+		
+		return (int) Math.round(frequencia);
 	}
 	
 	/**
