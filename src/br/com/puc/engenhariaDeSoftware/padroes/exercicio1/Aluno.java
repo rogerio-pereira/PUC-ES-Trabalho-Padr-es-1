@@ -2,9 +2,9 @@ package br.com.puc.engenhariaDeSoftware.padroes.exercicio1;
 
 public abstract class Aluno 
 {
-	protected double nota;
-	protected int 	aulas;
-	protected int 	faltas;
+	protected double nota = -1;
+	protected int 	aulas = -1;
+	protected int 	faltas = -1;
 	
 	/**
 	 * Lança a nota para o aluno
@@ -76,7 +76,7 @@ public abstract class Aluno
 		frequencia = 1.0 - frequencia;								//Diminui a porcentagem de 1, para obter a frequencia
 		frequencia = frequencia * 100; 								//Multiplica por 100 para obter o valor fracionario da frequencia, por exemplo 30%
 		
-		return (int) Math.round(frequencia);
+		return (int) frequencia;
 	}
 	
 	/**

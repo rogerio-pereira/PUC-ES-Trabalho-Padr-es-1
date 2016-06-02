@@ -8,7 +8,7 @@ import org.junit.Test;
 import br.com.puc.engenhariaDeSoftware.padroes.exercicio1.Aluno;
 
 public class AlunoTest {
-	private static Aluno aluno;
+	private Aluno aluno;
 	
 	@Before
 	public void configuraClasseDeTeste()
