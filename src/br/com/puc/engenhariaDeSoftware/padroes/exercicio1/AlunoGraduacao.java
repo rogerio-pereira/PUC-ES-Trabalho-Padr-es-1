@@ -5,9 +5,9 @@ public class AlunoGraduacao extends Aluno {
 	@Override
 	public boolean isAprovado() {
 		if(this.getAulas() < 0)
-			throw new RuntimeException("Não foi lançado nenhuma aula");
+			throw new RuntimeException("NÃ£o foi lanÃ§ado nenhuma aula");
 		if(this.getNota() < 0)
-			throw new RuntimeException("Não foi lançado nenhuma nota");
+			throw new RuntimeException("NÃ£o foi lanÃ§ado nenhuma nota");
 		
 		if((this.getNota() >= 6.5) && (this.getFrequencia() >= 80))
 			return true;

@@ -31,6 +31,11 @@ public abstract class Aluno
 			throw new RuntimeException("Não pode ser lançado numeros nulos de aulas");
 		if(faltasLancadas < 0)
 			throw new RuntimeException("Não pode ser lançado numeros nulos de faltas");
+
+		if(aulas == -1)
+			aulas = 0;
+		if(faltas == -1)
+			faltas = 0;
 		
 		aulas 	= aulas + aulasLancadas;
 		faltas	= faltas + faltasLancadas;
